@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "interactive-book-e0681": {
+      "hosting": {
+        "interactive-book": [
+          "interactive-book-e0681"
+        ]
+      }
+    }
+  }
+}

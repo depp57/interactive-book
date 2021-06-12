@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AuthService } from './auth/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-root',
@@ -7,6 +9,12 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
+
+    public isLoggedIn: Observable<boolean> = this.auth.isLoggedIn;
+
+    constructor(private auth: AuthService) {
+        this.auth.isLoggedIn.subscribe(value => console.log('logged in ? ', value));
+    }
 
     ngOnInit(): void {
         const pages = document.getElementsByClassName('page');
@@ -24,7 +32,7 @@ export class AppComponent implements OnInit {
                 const page = pages[i] as HTMLElement;
 
                 page.onclick = function () {
-                    if ((i+1) % 2 === 0) {
+                    if ((i + 1) % 2 === 0) {
                         page.classList.remove('flipped');
                         page.previousElementSibling?.classList.remove('flipped');
                     }

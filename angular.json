@@ -116,6 +116,10 @@
           "options": {
             "browserTarget": "interactive-book:build"
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

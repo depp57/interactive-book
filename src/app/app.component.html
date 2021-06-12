@@ -7,4 +7,5 @@
         <div class="page"></div>
     </div>
 </div>
-y
+
+<app-auth *ngIf="!(isLoggedIn | async)"></app-auth>
