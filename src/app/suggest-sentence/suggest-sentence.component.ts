@@ -1,4 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { stopEventPropagation } from '../utils';
+import { SuggestionService } from '../suggestion.service';
 
 @Component({
   selector: 'app-suggest-sentence',
@@ -6,11 +8,24 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./suggest-sentence.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SuggestSentenceComponent implements OnInit {
+export class SuggestSentenceComponent {
 
-  constructor() { }
+  @Input() lastPageNumber!: number;
 
-  ngOnInit(): void {
+  constructor(private suggestion: SuggestionService) {}
+
+  stopEventPropagation(event: MouseEvent): void {
+    stopEventPropagation(event);
   }
 
+  onSubmit(event: MouseEvent): void {
+    stopEventPropagation(event);
+
+    const input    = document.getElementById('suggestion') as HTMLInputElement;
+    const sentence = input.value;
+
+    this.suggestion.publishSuggestion(this.lastPageNumber, sentence);
+
+    input.value = '';
+  }
 }

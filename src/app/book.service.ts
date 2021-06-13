@@ -19,6 +19,13 @@ export class BookService {
       map(snap => [...Array(snap.size).keys()]),
       shareReplay()
     );
+
+    // return this.pagesCollection.valueChanges().pipe(
+    //   map(pages => {
+    //     return [...Array(pages.length).keys()];
+    //   }),
+    //   shareReplay()
+    // );
   }
 
   getPageContent(pageNumber: number): Observable<Page | undefined> {

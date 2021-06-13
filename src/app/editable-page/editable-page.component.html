@@ -1,7 +1,7 @@
 <div class="page-content">
     <p>{{(pageContent | async)?.text}}</p>
 
-    <app-suggest-sentence *ngIf="isLoggedIn | async else notLoggedIn"></app-suggest-sentence>
+    <app-suggest-sentence [lastPageNumber]="pageNumber" *ngIf="isLoggedIn | async else notLoggedIn"></app-suggest-sentence>
 
     <ng-template #notLoggedIn>
         <app-auth></app-auth>

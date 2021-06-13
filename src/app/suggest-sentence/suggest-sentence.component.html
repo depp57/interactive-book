@@ -8,6 +8,10 @@
     <div class="do-suggestion-container">
         <h4>Suggérez ici une phrase à ajouter à l'histoire</h4>
 
-
+        <button (click)="onSubmit($event)">
+            <i class="fas fa-plus-square"></i>
+        </button>
+        <input type="text" id="suggestion"
+               (click)="stopEventPropagation($event)">
     </div>
 </div>

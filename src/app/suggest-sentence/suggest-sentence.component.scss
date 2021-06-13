@@ -3,4 +3,21 @@
   bottom: 1rem;
   padding: 1rem;
   z-index: 1000;
+  width: 80%;
+}
+
+button {
+  background: #f0f0f0;
+  border: none;
+  color: black;
+  padding: 8px;
+  font-size: 8px;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+input {
+  width: 90%;
+  border: none;
 }

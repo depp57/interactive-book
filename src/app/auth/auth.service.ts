@@ -34,11 +34,6 @@ export class AuthService {
     );
   }
 
-  signOut(): Promise<void> {
-    this.deleteUserData();
-    return this.auth.signOut();
-  }
-
   private saveUserData(credentials: UserCredential): void {
     if (credentials.user?.uid) {
       this.user.next({
@@ -46,9 +41,5 @@ export class AuthService {
         displayName: credentials.user.displayName ?? 'Victor Hugo'
       });
     }
-  }
-
-  private deleteUserData(): void {
-    this.user.next(null);
   }
 }
