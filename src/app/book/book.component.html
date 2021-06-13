@@ -1,0 +1,18 @@
+<div class="book">
+    <div id="pages" class="pages">
+        <div class="page">
+            <img src="assets/book_cover.jpg" alt="book-cover">
+        </div>
+        <div class="page">
+            <div class="center">
+                <h3>En vous remerciant de participer à cette histoire</h3>
+            </div>
+        </div>
+        <div class="page" *ngFor="let page of (pages | async); let index = index;">
+            <app-page [pageNumber]="index + 2"></app-page>
+        </div>
+        <div class="page">
+            <img src="assets/book_cover_end.jpg" alt="book-cover">
+        </div>
+    </div>
+</div>
