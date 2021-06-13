@@ -1,6 +1,23 @@
 $bookWidth: clamp(200px, 80vw, 1200px);
 $pageWidth: clamp(100px, 40vw, 600px);
-$height: 90vh;
+$height: 87vh;
+
+.bookmark {
+  position: absolute;
+  bottom: -15px;
+  height: 15px;
+  right: 10px;
+
+  .fa-bookmark {
+    color: #d03b3b;
+    transition: all .2s ease-in-out;
+
+    &:hover {
+      transform: scale3d(1.2, 1.2, 1.2);
+      cursor: pointer;
+    }
+  }
+}
 
 .center {
   height: 100%;

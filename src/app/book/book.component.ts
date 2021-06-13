@@ -1,6 +1,5 @@
-import { AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { BookService } from '../book.service';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-book',
@@ -48,5 +47,26 @@ export class BookComponent {
         }
       });
     }
+  }
+
+  navigateToLastPage(): void {
+    const pages        = document.getElementsByClassName('page');
+    const lastPage     = pages.length - 4;
+    let i              = 0;
+    const tickDuration = 1500 / lastPage / 2;
+
+    const tick = () => {
+      setTimeout(() => {
+        const page = pages[i] as HTMLElement;
+        page.click();
+
+        if (i < lastPage) {
+          i = i + 2;
+          tick();
+        }
+      }, tickDuration);
+    };
+
+    tick();
   }
 }
