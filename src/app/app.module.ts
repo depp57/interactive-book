@@ -10,13 +10,18 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { BookComponent } from './book/book.component';
 import { PageComponent } from './page/page.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { EditablePageComponent } from './editable-page/editable-page.component';
+import { SuggestSentenceComponent } from './suggest-sentence/suggest-sentence.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     BookComponent,
-    PageComponent
+    PageComponent,
+    EditablePageComponent,
+    SuggestSentenceComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

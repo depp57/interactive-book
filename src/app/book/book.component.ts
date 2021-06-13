@@ -1,18 +1,20 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { BookService } from '../book.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookComponent {
 
-  pages = this.storage.countPages();
+  pages           = this.storage.countPages();
+  isPageNumberOdd = false;
 
-  constructor(private storage: BookService) {
+  constructor(private storage: BookService,
+              private changeDetector: ChangeDetectorRef) {
     this.storage.countPages().subscribe(() => this.animateBook());
   }
 
@@ -21,8 +23,9 @@ export class BookComponent {
     const isPageNumberOdd = pages.length % 2 !== 0;
 
     if (isPageNumberOdd) {
-      const lastPage = pages[pages.length - 1];
-      this.addEndingPage(lastPage);
+      this.isPageNumberOdd = true;
+      this.changeDetector.detectChanges();
+      pages = document.getElementsByClassName('page');
     }
 
     for (let i = 0; i < pages.length; i++) {
@@ -45,20 +48,5 @@ export class BookComponent {
         }
       });
     }
-  }
-
-  private addEndingPage(lastPage: Element): void {
-    const newPage       = document.createElement('div');
-    newPage.className   = 'page';
-    const centerDiv     = document.createElement('div');
-    centerDiv.className = 'center';
-    const text          = document.createElement('h3');
-    text.innerText      = 'Fin';
-    centerDiv.append(text);
-    newPage.append(centerDiv);
-
-    const book = document.getElementById('pages');
-
-    book?.insertBefore(newPage, lastPage);
   }
 }

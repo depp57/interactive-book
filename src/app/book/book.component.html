@@ -3,13 +3,20 @@
         <div class="page">
             <img src="assets/book_cover.jpg" alt="book-cover">
         </div>
-        <div class="page">
+        <div class="page" style="display: none">
             <div class="center">
                 <h3>En vous remerciant de participer à cette histoire</h3>
             </div>
         </div>
-        <div class="page" *ngFor="let page of (pages | async); let index = index;">
-            <app-page [pageNumber]="index + 2"></app-page>
+        <div class="page" *ngFor="let page of pages | async; let index = index; last as isLast;">
+            <app-page [pageNumber]="index + 2" *ngIf="!isLast"></app-page>
+            <app-editable-page [pageNumber]="index + 2" *ngIf="isLast"></app-editable-page>
+        </div>
+
+        <div class="page" *ngIf="isPageNumberOdd">
+            <div class="center">
+                <h3>Fin</h3>
+            </div>
         </div>
 
         <div class="page" style="display: none">

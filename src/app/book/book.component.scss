@@ -1,3 +1,7 @@
+$bookWidth: clamp(200px, 80vw, 1200px);
+$pageWidth: clamp(100px, 40vw, 600px);
+$height: 90vh;
+
 .center {
   height: 100%;
   display: flex;
@@ -25,8 +29,8 @@ p {
 }
 
 .page {
-  width: 30vw;
-  height: 44vw;
+  width: $pageWidth;
+  height: $height;
   float: left;
   margin-bottom: 0.5em;
   background: #111111 no-repeat left top;
@@ -38,8 +42,8 @@ p {
 }
 
 .book #pages {
-  width: 60vw;
-  height: 44vw;
+  width: $bookWidth;
+  height: $height;
   position: relative;
   transform-style: preserve-3d;
   backface-visibility: hidden;
@@ -52,13 +56,12 @@ p {
   margin: 0;
   position: absolute;
   top: 0;
-  width: 30vw;
-  height: 44vw;
+  width: $pageWidth;
+  height: $height;
   transform-origin: 0 0;
   transition: transform 1.4s;
   backface-visibility: hidden;
   transform-style: preserve-3d;
-  cursor: pointer;
   user-select: none;
   background-color: #c2c2c2;
 }
@@ -141,4 +144,20 @@ p {
 
 .page:nth-child(odd) {
   background-position: right top;
+}
+
+:host ::ng-deep .page-number {
+  position: absolute;
+  bottom: .5rem;
+  right: .5rem;
+  line-height: 1rem;
+}
+
+:host ::ng-deep .page-content {
+  height: 100%;
+  padding: .5rem 1.5rem;
+}
+
+:host ::ng-deep h3 {
+  margin: 0;
 }

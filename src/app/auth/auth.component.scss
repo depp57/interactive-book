@@ -1,0 +1,23 @@
+.login-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.login-container {
+  position: absolute;
+  bottom: 1rem;
+  padding: 1rem;
+  text-align: center;
+  z-index: 1000;
+}
+
+button {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px;
+  font-size: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+

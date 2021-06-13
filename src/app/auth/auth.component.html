@@ -1,6 +1,14 @@
-<h3>Howdy, GUEST</h3>
-<p>Login to get started...</p>
+<div class="login-container">
+    <h4>Connectez vous pour proposez une suite et voter pour les meilleures suggestions !</h4>
 
-<button (click)="onGoogleSignIn()">
-    <i class="fa fa-google"></i> Connect Google
-</button>
+    <div class="login-buttons">
+        <button (click)="onGoogleSignIn($event)">
+            <i class="fab fa-google"></i>
+        </button>
+
+        <button (click)="onEmailSignIn($event)">
+            <i class="fas fa-user-ninja"></i>
+        </button>
+    </div>
+
+</div>
