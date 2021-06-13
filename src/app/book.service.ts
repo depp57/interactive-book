@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,8 @@ export class BookService {
 
   countPages(): Observable<number[]> {
     return this.pagesCollection.get().pipe(
-      map(snap => [...Array(snap.size).keys()])
+      map(snap => [...Array(snap.size).keys()]),
+      shareReplay()
     );
   }
 

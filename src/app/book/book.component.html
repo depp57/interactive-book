@@ -1,5 +1,5 @@
 <div class="book">
-    <div id="pages" class="pages">
+    <div id="pages">
         <div class="page">
             <img src="assets/book_cover.jpg" alt="book-cover">
         </div>
@@ -11,7 +11,8 @@
         <div class="page" *ngFor="let page of (pages | async); let index = index;">
             <app-page [pageNumber]="index + 2"></app-page>
         </div>
-        <div class="page">
+
+        <div class="page" style="display: none">
             <img src="assets/book_cover_end.jpg" alt="book-cover">
         </div>
     </div>
